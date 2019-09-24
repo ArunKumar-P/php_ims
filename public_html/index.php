@@ -44,7 +44,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary"><i class="fa fa-lock"></i> &nbsp; Login</button>
-                <span><a href="#">Register</a></span>
+                <span><a href="register.php">Register</a></span>
                 </form>
             </div>
             <div class="card-footer"><a href="#">Forgot Password?</a></div>
