@@ -11,3 +11,7 @@ CREATE TABLE IF NOT EXISTS user (
     notes			varchar(255),
 	PRIMARY KEY 	(id)
 );
+
+ALTER TABLE `user` ADD UNIQUE(`password`);
+ALTER TABLE `user` CHANGE `last_login` `last_login` DATETIME NULL DEFAULT NULL;
+
