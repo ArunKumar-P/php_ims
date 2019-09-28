@@ -69,8 +69,7 @@
                         return 1;
                     }else{
                         return 0;
-                    }
-    
+                    }    
                 }else{
                     return "PASSWORD_NOT_MATCHED";
                 }
@@ -78,10 +77,10 @@
         }
     }
     
-    /* Creating Object*/
-    $user = new User();
+    /* Creating Object for testing*/
+    //$user = new User();
     //echo $user->createUserAccount("Admin Test","ims_admin@gmail.com","1234567890","Admin");
 
-    echo $user->userLogin("ims_admin@gmail.com","1234567890");
-    echo $_SESSION["username"];
+    //echo $user->userLogin("ims_admin@gmail.com","1234567890");
+    //echo $_SESSION["username"];
 ?>
