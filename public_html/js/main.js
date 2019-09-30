@@ -1,6 +1,7 @@
 $(document).ready(function(){
   //Global Variables
   var DOMAIN = "http://localhost/php_ims/public_html";
+ 
   //Callback function for on submit
   $("#register_form").on("submit",function(){
       var status = false;
@@ -90,9 +91,63 @@ $(document).ready(function(){
               $(".overlay").hide();
               window.location.href = encodeURI(DOMAIN + "/index.php?msg=You are registered. Now you can login");
             }
-
           }
         })
       }
     })
+
+    //Callback function for Login part
+    $("#form_login").on("submit",function(){
+        var email = $("#log_email");
+        var pass = $("#log_password");
+        var status = false; 
+
+        //Validate email address: Should not be blank
+        if (email.val() == "") {
+          email.addClass("border-danger");
+          $("#e_error").html("<span class='text-danger'>Please Enter email address</span>");
+          status = false;
+        } else {
+          email.removeClass("border-danger");
+          $("#e_error").html("");
+          status = true;
+        }
+
+        //Validate password: Should not be blank
+        if (pass.val() == "") {
+          pass.addClass("border-danger");
+          $("#p_error").html("<span class='text-danger'>Please enter password</span>");
+          status = false;
+        } else {
+          pass.removeClass("border-danger");
+          $("#p_error").html("");
+          status = true;
+        }
+
+        if (status) {
+          $.ajax({
+            url : DOMAIN+"/includes/process.php",
+            method : "POST",
+            data : $("#form_login").serialize(),
+            success : function(data){
+              if (data == "NOT_REGISTERD") {
+                $(".overlay").hide();
+                email.addClass("border-danger");
+                $("#e_error").html("<span class='text-danger'>Your email is not registered</span>");
+                status = false;
+              } else if(data == "PASSWORD_NOT_MATCHED"){
+                $(".overlay").hide();
+                pass.addClass("border-danger");
+                $("#p_error").html("<span class='text-danger'>Please enter correct password</span>");
+                status = false;
+              } else {                			
+                console.log(data);
+				        //alert(status);
+                window.location.href = DOMAIN+"/dashboard.php";
+              }
+            }
+          })
+        }
+    })
+
 })

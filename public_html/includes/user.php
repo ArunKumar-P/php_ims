@@ -78,9 +78,9 @@
     }
     
     /* Creating Object for testing*/
-    //$user = new User();
+    //  $user = new User();
     //echo $user->createUserAccount("Admin Test","ims_admin@gmail.com","1234567890","Admin");
 
-    //echo $user->userLogin("ims_admin@gmail.com","1234567890");
+    //echo $user->userLogin("admin@ims.com","1234567890");
     //echo $_SESSION["username"];
 ?>
