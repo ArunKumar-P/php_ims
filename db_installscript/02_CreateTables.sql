@@ -15,3 +15,10 @@ CREATE TABLE IF NOT EXISTS user (
 ALTER TABLE `user` ADD UNIQUE(`password`);
 ALTER TABLE `user` CHANGE `last_login` `last_login` DATETIME NULL DEFAULT NULL;
 
+CREATE TABLE  IF NOT EXISTS categories( 
+	`cid` INT(11) NOT NULL auto_increment, 
+    `parent_cat` INT(11) NOT NULL , 
+    `category_name` VARCHAR(255) NOT NULL , 
+    `status` ENUM('1', '0') NOT NULL, 
+    PRIMARY KEY (`cid`), UNIQUE (`category_name`)
+);
